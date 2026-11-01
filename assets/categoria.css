@@ -1,0 +1,281 @@
+/* páginas de categoria: Livros, LPs, CDs, DVDs */
+body.cat{background:var(--bg,var(--papel));color:var(--fg,var(--tinta))}
+
+/* hero: palco fixo enquanto o objeto 3D se transforma */
+.c-hero{height:300vh;position:relative}
+/* a cena termina montada e sai rolando; a seção seguinte já sobe por cima, sem tela vazia */
+.c-hero+section{z-index:2;margin-top:-7vh;padding-top:15vh;background:var(--papel);border-radius:clamp(24px,3vw,48px) clamp(24px,3vw,48px) 0 0;box-shadow:0 -24px 60px -30px #0008}
+.c-hero .palco{position:sticky;top:0;height:100vh;overflow:hidden;perspective:1400px;display:grid;place-items:center;background:var(--fundo);color:var(--destaque)}
+.c-hero .luz{position:absolute;inset:0;pointer-events:none;background:radial-gradient(60% 55% at 50% 42%,color-mix(in srgb,var(--cor) 70%,transparent),transparent 70%);opacity:.75}
+.c-hero h1{position:absolute;left:var(--gutter);bottom:4vh;font-family:var(--serif);font-weight:400;font-size:clamp(120px,27vw,470px);line-height:.78;letter-spacing:-.05em;z-index:0;pointer-events:none;white-space:nowrap}
+.c-hero h1 .ch{transform-origin:50% 100%}
+.c-hero .meta{position:absolute;top:100px;left:var(--gutter);right:var(--gutter);display:flex;justify-content:space-between;gap:16px;z-index:3}
+.c-hero .rolar{position:absolute;right:var(--gutter);bottom:5vh;display:flex;align-items:center;gap:12px;z-index:3}
+.c-hero .rolar i{display:block;width:1px;height:56px;background:currentColor;transform-origin:50% 0;animation:rolar 1.8s var(--ease) infinite}
+@keyframes rolar{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:50% 0}51%{transform-origin:50% 100%}100%{transform:scaleY(0);transform-origin:50% 100%}}
+.c-hero .obj{position:relative;z-index:2;transform-style:preserve-3d}
+.c-hero .legenda{position:absolute;left:var(--gutter);top:50%;transform:translateY(-50%);z-index:3;display:flex;flex-direction:column;gap:6px;max-width:220px}
+.c-hero .legenda b{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.4vw,40px);line-height:1}
+
+/* gêneros */
+.generos{position:relative;padding:22vh var(--gutter) 20vh}
+.generos .topo{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:7vh}
+.generos h2{font-family:var(--serif);font-weight:400;font-size:clamp(68px,12vw,210px);line-height:.82;letter-spacing:-.045em}
+.generos h2 em{color:var(--cor)}
+.lista{border-top:1px solid currentColor;perspective:1000px}
+.gen{display:grid;grid-template-columns:clamp(40px,6vw,90px) 1fr auto;align-items:center;gap:clamp(12px,2vw,28px);padding:clamp(14px,1.6vw,22px) clamp(8px,1vw,16px);border-bottom:1px solid color-mix(in srgb,currentColor 22%,transparent);position:relative;isolation:isolate;transform-origin:50% 0;transition:color .5s var(--ease)}
+.gen::before{content:'';position:absolute;inset:0;z-index:-1;background:var(--c);transform:scaleY(0);transform-origin:50% 100%;transition:transform .6s var(--ease)}
+.gen .n{font-size:13px;font-weight:600;opacity:.5;font-variant-numeric:tabular-nums}
+.gen .t{font-family:var(--serif);font-size:clamp(36px,5.6vw,96px);line-height:1.02;letter-spacing:-.025em;transition:transform .7s var(--ease)}
+.gen .seta{width:clamp(44px,4.4vw,64px);aspect-ratio:1;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;font-size:20px;transition:transform .6s var(--ease),background .4s,color .4s}
+.gen:hover{color:var(--ct,var(--papel))}
+.gen:hover::before{transform:scaleY(1);transform-origin:50% 0}
+.gen:hover .t{transform:translateX(clamp(8px,2vw,32px));font-style:italic}
+.gen:hover .seta{transform:rotate(-45deg);background:var(--ct,var(--papel));color:var(--c)}
+
+/* prévia que segue o mouse sobre a lista, ao lado do cursor para não cobrir o nome */
+.preview{position:fixed;left:0;top:0;z-index:70;width:clamp(160px,13vw,220px);margin:-120px 0 0 48px;pointer-events:none;opacity:0;transform:scale(.4)}
+.preview .pilha{position:relative;aspect-ratio:var(--ar,3/4)}
+.preview .pilha>*{position:absolute;inset:0;border-radius:6px;box-shadow:0 30px 60px -20px #000a}
+.preview .pilha .tr1{background:color-mix(in srgb,var(--c) 55%,#000);transform:rotate(-9deg) translate(-14%,4%)}
+.preview .pilha .tr2{background:color-mix(in srgb,var(--c) 75%,#fff);transform:rotate(7deg) translate(12%,2%)}
+.preview .frente{background:var(--c);color:var(--ct,var(--papel));overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;padding:16px}
+.preview .frente .arte{--c1:var(--c);--c2:var(--ct,var(--papel));opacity:.35}
+.preview .frente b{position:relative;font-family:var(--serif);font-weight:400;font-size:34px;line-height:.95}
+/* capas reais do gênero por cima da pilha colorida, que fica de reserva enquanto carregam */
+.preview .pilha>*>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.preview .frente.tem-capa .arte,.preview .frente.tem-capa b{display:none}
+.preview .frente .nome-g{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:28px 12px 10px;background:linear-gradient(transparent,#000c);color:#F4EAD5;font:600 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;display:none}
+.preview .frente.tem-capa .nome-g{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+/* cada página empilha o próprio objeto: a cor e a capa ficam por baixo, o desenho do objeto por cima */
+.preview .pilha>*::before,.preview .pilha>*::after{content:'';position:absolute;pointer-events:none;z-index:3}
+.preview .pilha>*::after{inset:0;border-radius:inherit}
+/* livro: lombada vincada e o bloco de páginas aparecendo na borda */
+.pv-livro .pilha>*{border-radius:2px 5px 5px 2px;box-shadow:2px 2px 0 #f1e7d0,4px 4px 0 #ddd0b2,5px 6px 0 #bfae8a,0 30px 60px -20px #000a}
+.pv-livro .pilha>*::after{background:linear-gradient(90deg,#0007,#0000 5%,#fff3 6.5%,#0000 9%),linear-gradient(115deg,#ffffff24,#fff0 40%)}
+/* gibi: revista fina de banca, com faixa do título, grampos e dobra */
+.pv-gibi .pilha>*{border-radius:2px 4px 4px 2px;box-shadow:1px 1px 0 #efe4cc,2px 2px 0 #d9c9a6,0 30px 60px -20px #000a}
+.pv-gibi .pilha>*::before{content:'Sebo';left:0;right:0;top:0;height:13%;display:flex;align-items:center;padding-left:10px;
+  background:radial-gradient(#0000002e 1px,#0000 1.4px) 0 0/5px 5px,#B3121D;color:#FFC20E;font:italic 400 18px/1 var(--serif);text-shadow:1px 1px 0 #1E1412}
+.pv-gibi .pilha>*::after{background:linear-gradient(#e2e2e2,#8a8a8a) 2px 30%/3px 8% no-repeat,linear-gradient(#e2e2e2,#8a8a8a) 2px 72%/3px 8% no-repeat,linear-gradient(90deg,#0005,#0000 4%,#fff2 5%,#0000 7%),linear-gradient(120deg,#ffffff2e,#fff0 35%)}
+.pv-gibi .pilha>*>img{top:13%;height:87%}
+/* LP: capa quadrada com o disco escapando pela lateral */
+.pv-lp .pilha>*{border-radius:3px}
+.pv-lp .pilha>*::after{background:radial-gradient(circle,#0000 39%,#ffffff17 40% 42%,#0000 43%),linear-gradient(135deg,#ffffff24,#fff0 45%)}
+.pv-lp .frente{z-index:2}
+.pv-lp .pilha::after{content:'';position:absolute;z-index:1;top:5%;bottom:5%;left:36%;aspect-ratio:1;border-radius:50%;box-shadow:0 30px 60px -20px #000a;
+  background:radial-gradient(circle,#0000 0 3%,#F4EAD5 3.5% 5%,var(--c) 5.5% 17%,#0000 17.5%),conic-gradient(from 30deg,#ffffff1a,#0000 12%,#0000 38%,#ffffff14 50%,#0000 62%,#0000 88%,#ffffff1a),repeating-radial-gradient(circle,#161616 0 1px,#0b0b0b 1.5px 3px)}
+/* CD: estojo acrílico, dobradiça à esquerda e reflexo */
+.pv-cd .pilha>*{border-radius:3px}
+.pv-cd .pilha>*::before{left:0;top:0;bottom:0;width:9%;border-radius:3px 0 0 3px;background:repeating-linear-gradient(#ffffff12 0 2px,#0000 2px 9px),linear-gradient(90deg,#141414,#2b2b2b 60%,#141414)}
+.pv-cd .pilha>*::after{background:linear-gradient(118deg,#ffffff4d,#fff0 38%,#fff0 62%,#ffffff1a);box-shadow:inset 0 0 0 1px #ffffff3d}
+.pv-cd .pilha>*>img{left:9%;width:91%}
+.pv-cd .frente .nome-g{left:9%}
+/* DVD: estojo preto alto com a faixa do selo em cima */
+.pv-dvd .pilha>*{border-radius:7px}
+.pv-dvd .pilha>*::before{content:'DVD';left:0;right:0;top:0;height:11%;border-radius:7px 7px 0 0;background:#0a0a0c;color:#F4EAD5;display:grid;place-items:center;font:700 9px/1 var(--sans);letter-spacing:.42em}
+.pv-dvd .pilha>*::after{background:linear-gradient(110deg,#ffffff26,#fff0 30%);box-shadow:inset 0 0 0 6px #0f0f12,inset 0 0 0 7px #ffffff14}
+.pv-dvd .pilha>*>img{inset:11% 6px 6px;width:auto;height:auto;border-radius:0}
+.pv-dvd .frente .nome-g{left:6px;right:6px;bottom:6px}
+
+/* frase */
+.frase-sec{min-height:100vh;display:grid;place-items:center;padding:22vh var(--gutter);position:relative;overflow:hidden}
+.frase{font-family:var(--serif);font-weight:400;font-size:clamp(46px,7.6vw,132px);line-height:.98;letter-spacing:-.03em;max-width:16ch;text-align:center}
+.frase em{color:var(--destaque)}
+
+/* vitrine em arco 3D */
+.vitrine{height:460vh;position:relative}
+.vitrine .palco{position:sticky;top:0;height:100vh;overflow:hidden;perspective:1100px;display:flex;align-items:center}
+.vitrine .fundo-tit{position:absolute;left:0;top:50%;font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(150px,30vw,540px);white-space:nowrap;line-height:1;letter-spacing:-.05em;opacity:.09;pointer-events:none}
+.vitrine .topo{position:absolute;top:100px;left:var(--gutter);right:var(--gutter);display:flex;justify-content:space-between;z-index:3}
+.vitrine .barra{position:absolute;left:var(--gutter);right:var(--gutter);bottom:34px;height:2px;background:color-mix(in srgb,currentColor 18%,transparent);z-index:3}
+.vitrine .barra i{display:block;height:100%;width:0;background:var(--destaque)}
+.trilho{position:relative;display:flex;gap:clamp(28px,4vw,72px);transform-style:preserve-3d;will-change:transform}
+.obra{flex:none;width:var(--w,clamp(200px,24vw,360px));transform-style:preserve-3d;will-change:transform}
+.obra .item{position:relative;transform-style:preserve-3d}
+.obra figcaption{margin-top:22px;display:flex;justify-content:space-between;gap:12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.55;transition:opacity .5s}
+.obra.foco figcaption{opacity:1}
+
+/* capas geradas */
+.capa{position:relative;aspect-ratio:var(--ar,1);border-radius:3px;overflow:hidden;background:var(--c1);color:var(--c3);display:flex;flex-direction:column;justify-content:space-between;padding:9%;box-shadow:0 50px 90px -40px #000e,0 12px 24px #0006;z-index:1}
+.capa::after{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,25%) var(--my,15%),#ffffff59,transparent 55%);mix-blend-mode:soft-light}
+.capa b{position:relative;z-index:1;font-family:var(--serif);font-weight:400;font-size:clamp(24px,2.5vw,42px);line-height:.95;letter-spacing:-.01em}
+.capa i{position:relative;z-index:1;font-style:normal;font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600}
+.arte{position:absolute;inset:0}
+.a1{background:radial-gradient(circle at 68% 62%,var(--c2) 0 25%,transparent 25.5%),linear-gradient(transparent 80%,var(--c2) 80% 83%,transparent 83%)}
+.a2{background:linear-gradient(var(--c1) 46%,transparent 46%),repeating-linear-gradient(-45deg,var(--c2) 0 12px,transparent 12px 30px)}
+.a3{background:repeating-radial-gradient(circle at 50% 64%,var(--c2) 0 5px,transparent 5px 17px);-webkit-mask:linear-gradient(transparent 30%,#000 30%);mask:linear-gradient(transparent 30%,#000 30%)}
+.a4{background:linear-gradient(90deg,transparent 60%,var(--c2) 60%),linear-gradient(transparent 64%,var(--c3) 64% 66%,transparent 66%)}
+.a5{background:radial-gradient(var(--c2) 32%,transparent 34%) 0 0/24px 24px;-webkit-mask:linear-gradient(transparent 42%,#000 42%);mask:linear-gradient(transparent 42%,#000 42%)}
+.a6{background:repeating-linear-gradient(transparent 0 16px,var(--c1) 16px 21px) 0 100%/100% 34% no-repeat,radial-gradient(circle at 50% 102%,var(--c2) 0 42%,transparent 42.5%)}
+
+/* capas reais do acervo: a foto ocupa a capa; título e autor ficam só para a busca */
+.capa.r{padding:0}
+.capa.r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.capa.r>:not(img){visibility:hidden}
+.obra figcaption span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.obra figcaption span:last-child{flex:none}
+
+/* livro: lombada sombreada */
+.obra.livro{--w:clamp(180px,20vw,300px)}
+.obra.livro .capa{--ar:2/3;border-radius:2px 6px 6px 2px}
+.obra.livro .capa::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,#0007,#0000 5%,#fff3 6.5%,#0000 9%)}
+
+/* LP: disco que sai da capa */
+.obra.lp .disco-mini{position:absolute;top:3%;left:3%;width:94%;aspect-ratio:1;border-radius:50%;z-index:0;
+  background:radial-gradient(circle,var(--c2) 0 15%,#111 15.5% 17%,transparent 17.5%),repeating-radial-gradient(circle,#161616 0 1px,#0b0b0b 1px 3px);
+  box-shadow:0 30px 60px -20px #000c;transition:transform 1.1s var(--ease)}
+.obra.lp .disco-mini::after{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,#fff0,#ffffff1f 8%,#fff0 16%,#fff0 50%,#ffffff1a 58%,#fff0 66%)}
+.obra.lp.foco .disco-mini,.obra.lp:hover .disco-mini{transform:translateX(46%) rotate(140deg)}
+
+/* CD: caixa acrílica com dobradiça */
+.obra.cd .item{padding:3% 3% 3% 10%;border-radius:4px;background:linear-gradient(90deg,#141414 0 8%,#ffffff1c 8%);border:1px solid #ffffff3d;box-shadow:0 50px 90px -40px #000e,0 12px 24px #0006}
+.obra.cd .item::after{content:'';position:absolute;inset:0;border-radius:4px;pointer-events:none;z-index:2;background:linear-gradient(118deg,#ffffff4d,#fff0 38%,#fff0 62%,#ffffff1a)}
+.obra.cd .capa{box-shadow:none}
+
+/* DVD: estojo alto */
+.obra.dvd{--w:clamp(180px,19vw,290px)}
+.obra.dvd .item{padding:4%;border-radius:9px;background:#0f0f12;box-shadow:0 50px 90px -40px #000e,0 12px 24px #0006,inset 0 0 0 1px #ffffff14}
+.obra.dvd .capa{--ar:27/38;padding-top:18%}
+.obra.dvd .capa.r img{top:9%;height:91%}
+.obra.dvd .capa::before{content:'DVD';position:absolute;left:0;right:0;top:0;height:9%;z-index:2;background:#0a0a0c;color:#f4ead5;display:grid;place-items:center;font:700 10px/1 var(--sans);letter-spacing:.42em}
+.obra.dvd .item::after{content:'';position:absolute;inset:0;border-radius:9px;pointer-events:none;z-index:2;background:linear-gradient(110deg,#ffffff26,#fff0 30%)}
+
+/* catálogo ao vivo */
+.catalogo{position:relative;padding:18vh var(--gutter) 20vh;--ar:2/3}
+.catalogo[data-tipo=lp],.catalogo[data-tipo=cd]{--ar:1/1}
+.catalogo[data-tipo=dvd]{--ar:27/38}
+.cat-topo{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:6vh}
+.cat-topo h2{font-family:var(--serif);font-weight:400;font-size:clamp(68px,12vw,210px);line-height:.82;letter-spacing:-.045em}
+.cat-topo h2 em{color:var(--cor)}
+.cat-total{font-variant-numeric:tabular-nums;transition:opacity .3s}
+.ocupado .cat-total{opacity:.4}
+.cat-barra{position:sticky;top:14px;z-index:6;transition:top .6s var(--ease)}
+body:has(.nav:not(.hide)) .cat-barra{top:86px}
+.cat-ctrl{display:flex;gap:8px;align-items:center;padding:8px;border-radius:99px;
+  background:color-mix(in srgb,var(--bg,#F4EAD5) 80%,transparent);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border:1px solid color-mix(in srgb,currentColor 14%,transparent);box-shadow:0 24px 60px -34px #000a}
+.busca{flex:1;display:flex;align-items:center;gap:12px;padding:0 8px 0 20px;height:52px;border-radius:99px;background:var(--papel);color:var(--tinta);box-shadow:inset 0 2px 8px #0000001a;min-width:0}
+.busca svg{flex:none;width:18px;height:18px;opacity:.55}
+.busca input{flex:1;min-width:0;border:0;background:none;font:inherit;font-size:16px;color:inherit;outline:0;height:100%}
+.busca input::placeholder{color:inherit;opacity:.45}
+.busca input::-webkit-search-cancel-button{cursor:pointer}
+.busca:focus-within{box-shadow:inset 0 2px 8px #0000001a,0 0 0 2px var(--cor)}
+/* ordenação: botão e menu no desenho das pílulas */
+.ordem{position:relative;flex:none}
+.ordem-btn{height:52px;display:flex;align-items:center;gap:10px;padding:0 20px 0 22px;border-radius:99px;font-size:14px;font-weight:500;white-space:nowrap;
+  border:1px solid color-mix(in srgb,currentColor 18%,transparent);background:color-mix(in srgb,var(--bg,#F4EAD5) 86%,transparent);box-shadow:0 10px 24px -16px #0008;transition:background .35s,color .35s,border-color .35s}
+.ordem-btn .label{font-size:10px;opacity:.5}
+.ordem-btn svg,.filtro-todos svg{flex:none;width:12px;height:8px;transition:transform .45s var(--ease)}
+.ordem-btn:hover{border-color:color-mix(in srgb,currentColor 40%,transparent)}
+.ordem-btn[aria-expanded=true]{background:var(--cor);color:var(--destaque);border-color:transparent}
+.ordem-btn[aria-expanded=true] svg,.filtro-todos[aria-expanded=true] svg{transform:rotate(180deg)}
+.ordem-lista{position:absolute;right:0;top:calc(100% + 10px);z-index:3;min-width:100%;width:max-content;margin:0;padding:6px;list-style:none;display:flex;flex-direction:column;gap:2px;
+  border-radius:26px;background:var(--papel);color:var(--tinta);border:1px solid #1e141218;box-shadow:0 30px 70px -24px #000b;outline:0}
+.ordem-lista[hidden]{display:none}
+.ordem-lista li{display:flex;justify-content:space-between;align-items:center;gap:22px;padding:13px 18px;border-radius:99px;font-size:14px;font-weight:500;cursor:pointer;transition:background .25s,color .25s}
+.ordem-lista li.ativo{background:#1e141210}
+.ordem-lista li[aria-selected=true]{background:var(--cor);color:var(--destaque)}
+.ordem-lista li[aria-selected=true]::after{content:'✓';font-size:13px}
+.ordem-lista:focus-visible li.ativo{box-shadow:inset 0 0 0 2px var(--cor)}
+
+/* filtros: 10 à vista e o índice completo de A a Z */
+.filtros{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.filtro{flex:none;display:inline-flex;align-items:center;gap:8px;padding:10px 17px;border-radius:99px;border:1px solid color-mix(in srgb,currentColor 18%,transparent);font-size:13px;font-weight:500;white-space:nowrap;transition:background .35s,color .35s,border-color .35s;
+  background:color-mix(in srgb,var(--bg,#F4EAD5) 86%,transparent);box-shadow:0 10px 24px -16px #0008}
+.filtro:hover{border-color:color-mix(in srgb,currentColor 45%,transparent)}
+.filtro[aria-pressed=true]{background:var(--cor);color:var(--destaque);border-color:transparent}
+.filtro-todos{border-color:color-mix(in srgb,currentColor 40%,transparent)}
+.filtro-todos[aria-expanded=true]{background:var(--tinta);color:var(--papel);border-color:transparent}
+.filtro-n{font-size:11px;font-variant-numeric:tabular-nums;opacity:.55}
+.filtros-todos{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,440px),1fr));column-gap:clamp(24px,3vw,56px);margin-top:18px;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.filtros-todos[hidden]{display:none}
+.letra{display:grid;grid-template-columns:clamp(34px,3.4vw,52px) 1fr;gap:12px;align-items:start;padding:14px 0;border-bottom:1px solid color-mix(in srgb,currentColor 12%,transparent)}
+.letra b{font-family:var(--serif);font-weight:400;font-size:clamp(30px,2.6vw,42px);line-height:.9;color:var(--cor)}
+.letra div{display:flex;flex-wrap:wrap;gap:6px}
+.letra .filtro{padding:8px 14px;box-shadow:none}
+
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(clamp(146px,15vw,236px),1fr));gap:clamp(36px,4vw,64px) clamp(16px,2.2vw,36px);margin-top:7vh;transition:opacity .3s}
+.grade.carregando{opacity:.25;pointer-events:none}
+.prod{display:flex;flex-direction:column;gap:18px;min-width:0}
+.prod-capa{position:relative;isolation:isolate;display:grid;place-items:center;width:100%;aspect-ratio:var(--ar);container-type:size;padding:0}
+.prod-obj{position:relative;display:block;line-height:0}
+/* todo produto no mesmo estojo: moldura escura arredondada e plástico por cima */
+.prod-obj img{position:relative;z-index:1;max-width:calc(100cqw - 6px);max-height:calc(100cqh - 6px);width:auto;height:auto;border-radius:6px;background:#1a1a1a;opacity:0;transition:opacity .3s;
+  outline:2px solid #101010;outline-offset:-1px;box-shadow:0 0 0 2px #262626,16px 26px 32px -12px #000c}
+.prod-obj img.ok{opacity:1}
+.prod-obj::before{content:'';position:absolute;inset:0;z-index:2;pointer-events:none;border-radius:6px;background:linear-gradient(112deg,#ffffff38 0 10%,transparent 26% 64%,#ffffff17 74%,transparent 82%)}
+/* livro e gibi: sombra de lombada sob o plástico */
+.catalogo:is([data-tipo=livro],[data-tipo=gibi]) .prod-obj::before{background:linear-gradient(90deg,#00000047,#ffffff2e 3%,#00000021 6%,transparent 9%),linear-gradient(112deg,#ffffff38 0 10%,transparent 26% 64%,#ffffff17 74%,transparent 82%)}
+/* LP: o disco aparece um pouco atrás da capa */
+.vinil{position:absolute;z-index:0;top:4%;bottom:4%;right:0;aspect-ratio:1;border-radius:50%;transform:translateX(16%);
+  background:radial-gradient(circle,#111 0 2.5%,var(--cor,#B3121D) 3% 17%,#0c0c0c 17.5% 19%,transparent 19.5%),repeating-radial-gradient(circle,#151515 0 1.5px,#262626 2px 3px),#151515;box-shadow:0 10px 30px -8px #000c}
+.vinil::after{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 30deg,transparent,#ffffff22 8%,transparent 16%,transparent 50%,#ffffff1a 58%,transparent 66%)}
+.catalogo[data-tipo=lp] .prod-obj{margin-right:12%}
+.capa-falsa{position:relative;z-index:1;width:calc(100cqw - 6px);height:calc(100cqh - 6px);display:flex;flex-direction:column;justify-content:space-between;padding:14% 12%;border-radius:6px;
+  background:radial-gradient(circle at 30% 20%,#ffffff1f,transparent 60%),var(--c1);color:var(--papel);line-height:1.1;text-align:left;outline:2px solid #101010;outline-offset:-1px;box-shadow:0 0 0 2px #262626,16px 26px 32px -12px #000c}
+.capa-falsa b{font-family:var(--serif);font-weight:400;font-size:clamp(18px,1.7vw,26px)}
+.capa-falsa i{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-style:normal;opacity:.75}
+.prod-info{display:flex;flex-direction:column;gap:6px;min-width:0}
+.prod-info .label{font-size:10.5px;opacity:.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.prod-info h3{font-family:var(--serif);font-weight:400;font-size:clamp(20px,1.55vw,26px);line-height:1.04;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-info h3 a{transition:color .3s}
+.prod-info h3 a:hover{color:var(--cor)}
+.prod-desc{font-size:13px;line-height:1.35;opacity:.7;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.prod-pe{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px}
+.prod-pe b{font-size:15px;font-weight:600;font-variant-numeric:tabular-nums}
+.prod-pe s,.fi-preco s{opacity:.5;font-weight:400;margin-right:8px;font-size:.85em}
+.add{flex:none;width:42px;height:42px;border-radius:50%;background:var(--cor);color:var(--destaque);font-size:20px;font-weight:500;display:grid;place-items:center;transition:transform .5s var(--ease),background .3s}
+.add:hover{transform:scale(1.12) rotate(90deg)}
+.add.na-sacola{background:var(--tinta);color:var(--amarelo)}
+.add.na-sacola:hover{transform:scale(1.12)}
+/* no hover, o ✓ avisa que o clique tira o item */
+@media (hover:hover){.add.na-sacola{position:relative}.add.na-sacola:hover{background:var(--vermelho);color:transparent}.add.na-sacola:hover::after{content:'×';position:absolute;inset:0;display:grid;place-items:center;color:var(--amarelo);font-size:22px}}
+.add:disabled{opacity:.3;cursor:default;transform:none}
+.esqueleto .prod-obj{width:72%;height:88%;border-radius:3px;background:linear-gradient(100deg,#0000000f 30%,#0000001f 50%,#0000000f 70%) 0 0/300% 100%;animation:brilha 1.4s linear infinite}
+.esqueleto .prod-info span{display:block;height:12px;width:60%;border-radius:6px;background:#0000000f}
+.esqueleto .prod-info span+span{height:22px;width:90%}
+@keyframes brilha{to{background-position:-150% 0}}
+.cat-aviso{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:10vh 0 4vh}
+.cat-aviso[hidden]{display:none}
+.cat-aviso p:first-child{font-family:var(--serif);font-size:clamp(40px,6vw,96px);line-height:.95;letter-spacing:-.03em;max-width:16ch}
+.cat-aviso .pill{margin-top:8px}
+.cat-pe{display:flex;justify-content:center;margin-top:10vh}
+.mais{background:var(--cor);color:var(--destaque);padding:18px 30px}
+.mais i{background:var(--destaque)}
+.mais[hidden]{display:none}
+
+/* próxima categoria */
+.proxima{display:block;position:relative;height:100vh;min-height:560px;overflow:hidden;isolation:isolate;background:var(--pc);color:var(--pt)}
+.proxima .label{position:absolute;top:14vh;left:var(--gutter)}
+.proxima .nome{position:absolute;left:var(--gutter);bottom:6vh;font-family:var(--serif);font-weight:400;font-size:clamp(130px,27vw,470px);line-height:.8;letter-spacing:-.05em;overflow:hidden;padding-bottom:.02em}
+.proxima .nome .ch{display:inline-block}
+.proxima .seta{position:absolute;right:var(--gutter);top:12vh;width:clamp(84px,11vw,170px);aspect-ratio:1;border-radius:50%;background:var(--pt);color:var(--pc);display:grid;place-items:center;font-size:clamp(28px,3vw,48px);transition:transform .8s var(--ease)}
+.proxima:hover .seta{transform:rotate(-45deg) scale(1.08)}
+.proxima .fantasma{position:absolute;right:-6vw;bottom:-10vh;width:min(62vw,720px);aspect-ratio:1;border-radius:50%;border:1px solid currentColor;opacity:.18;pointer-events:none}
+.proxima .fantasma::before,.proxima .fantasma::after{content:'';position:absolute;inset:14%;border-radius:50%;border:1px solid currentColor}
+.proxima .fantasma::after{inset:30%}
+
+@media (max-width:860px){
+  .c-hero .meta{top:86px}
+  .c-hero .legenda{display:none}
+  .gen{grid-template-columns:34px 1fr auto}
+  .vitrine{height:380vh}
+  .obra{--w:62vw}
+  .obra.livro,.obra.dvd{--w:52vw}
+  .preview{display:none}
+  .cat-ctrl{flex-wrap:wrap;border-radius:28px}
+  .busca{flex:1 1 100%}
+  .ordem{flex:1}
+  .ordem-btn{width:100%}
+  .ordem-btn svg{margin-left:auto}
+  .ordem-lista{left:0;width:auto}
+  body:has(.nav:not(.hide)) .cat-barra{top:80px}
+  .filtros{flex-wrap:nowrap;overflow-x:auto;margin:14px calc(var(--gutter)*-1) 0;padding:4px var(--gutter) 10px;scrollbar-width:none;
+    -webkit-mask-image:linear-gradient(90deg,transparent,#000 var(--gutter),#000 calc(100% - var(--gutter)),transparent);mask-image:linear-gradient(90deg,transparent,#000 var(--gutter),#000 calc(100% - var(--gutter)),transparent)}
+  .filtros::-webkit-scrollbar{display:none}
+  .letra{grid-template-columns:30px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .c-hero .rolar i,.esqueleto .prod-obj{animation:none}
+}

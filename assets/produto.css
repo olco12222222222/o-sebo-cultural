@@ -1,0 +1,104 @@
+/* página do produto: abre sem cortina, foto parada e centralizada */
+.cortina.ja:not(.entra){animation:none;clip-path:ellipse(160% 0% at 50% 0%)}
+.cortina.ja:not(.entra) b{animation:none;opacity:0}
+
+.pp{padding:clamp(108px,15vh,150px) var(--gutter) 22vh;min-height:100vh}
+.pp-topo{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:clamp(24px,5vh,52px)}
+.pp-trilha{display:flex;flex-wrap:wrap;align-items:center;gap:10px;min-width:0}
+.pp-trilha a{opacity:.65;transition:opacity .3s,color .3s}
+.pp-trilha a:hover{opacity:1;color:var(--cor)}
+.pp-trilha span{opacity:.3}
+.pp-trilha [hidden]{display:none}
+.pp-volta{display:inline-flex;align-items:center;gap:10px;padding:12px 20px;border-radius:99px;border:1px solid color-mix(in srgb,currentColor 25%,transparent);font-size:13px;font-weight:600;transition:background .3s,color .3s,border-color .3s}
+.pp-volta:hover{background:var(--tinta);color:var(--papel);border-color:transparent}
+
+.pp-grade{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:clamp(32px,6vw,112px);align-items:start}
+
+/* foto: o mesmo estojo escuro dos cartões, num expositor claro */
+.pp-midia{display:flex;flex-direction:column;gap:16px;min-width:0}
+.pp-palco{position:relative;display:grid;place-items:center;width:100%;aspect-ratio:1/1;max-height:min(78vh,760px);container-type:size;border-radius:clamp(20px,2vw,32px);
+  background:radial-gradient(70% 60% at 50% 38%,#fffaf0,transparent 75%),var(--papel-2);box-shadow:inset 0 0 0 1px #1e141214}
+.pp .prod-obj img{--w:76cqw;--h:84cqh;width:min(var(--w),calc(var(--h) * var(--r,.68)));height:auto;aspect-ratio:var(--r,.68);object-fit:cover;max-width:none;max-height:none;
+  outline-width:3px;box-shadow:0 0 0 3px #262626,26px 42px 60px -22px #000b}
+.pp:is([data-tipo=livro],[data-tipo=gibi]) .pp-obj::before{background:linear-gradient(90deg,#00000047,#ffffff2e 2.5%,#00000021 5%,transparent 8%),linear-gradient(112deg,#ffffff38 0 10%,transparent 26% 64%,#ffffff17 74%,transparent 82%)}
+.pp[data-tipo=lp] .pp-obj{margin-right:14%}
+.pp[data-tipo=lp] .prod-obj img{--w:64cqw;--h:64cqh}
+.pp .capa-falsa{width:auto;height:76cqh;aspect-ratio:var(--ar,2/3);max-width:76cqw;padding:12% 10%}
+.pp .capa-falsa b{font-size:clamp(28px,3vw,48px)}
+.pp-minis{display:flex;gap:10px;flex-wrap:wrap}
+.pp-minis[hidden]{display:none}
+.pp-mini{width:76px;height:76px;border-radius:14px;padding:8px;background:var(--papel-2);display:grid;place-items:center;box-shadow:inset 0 0 0 1px #1e141214;transition:box-shadow .3s}
+.pp-mini img{max-width:100%;max-height:100%;border-radius:3px}
+.pp-mini[aria-pressed=true]{box-shadow:inset 0 0 0 2px var(--cor)}
+
+/* informações */
+.pp-info{display:flex;flex-direction:column;min-width:0;padding-top:1vh}
+.pp-meta{opacity:.6}
+.pp-tit{font-family:var(--serif);font-weight:400;font-size:clamp(44px,5vw,88px);line-height:.94;letter-spacing:-.035em;margin-top:18px;text-wrap:balance;overflow-wrap:anywhere}
+.pp-resumo{font-size:clamp(14px,1.05vw,17px);margin-top:16px;opacity:.75}
+.pp-preco{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-top:clamp(26px,4.5vh,44px);font-size:clamp(32px,2.8vw,46px);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.pp-preco s{font-size:.5em;font-weight:400;opacity:.5}
+.pp-preco .label{font-size:11px;letter-spacing:.16em;padding:7px 12px;border-radius:99px;background:var(--tinta);color:var(--papel);align-self:center}
+.pp-acoes{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.pp-acoes .pill{padding:18px 28px;font-size:14px}
+.pp-add{background:var(--cor);color:var(--destaque)}
+.pp-add i{background:var(--destaque)}
+.pp-add.na-sacola{background:var(--tinta);color:var(--amarelo)}
+.pp-add.na-sacola i{background:var(--amarelo)}
+.pp-add:disabled{opacity:.35;cursor:default;transform:none}
+.pp-entrega{margin-top:16px;opacity:.55;font-size:11px}
+
+/* onde ver pessoalmente */
+.pp-lojas{margin-top:clamp(44px,8vh,80px)}
+.pp-lojas h2,.pp-desc h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,2.8vw,46px);line-height:1;letter-spacing:-.02em;margin-bottom:18px}
+.pp-lojas ul{list-style:none;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.loja{display:grid;grid-template-columns:14px minmax(0,1fr) auto;gap:4px 18px;align-items:center;padding:18px 0;border-bottom:1px solid color-mix(in srgb,currentColor 14%,transparent)}
+.loja .ponto{width:12px;height:12px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 4px color-mix(in srgb,var(--teal) 22%,transparent)}
+.loja b{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;font-size:17px;font-weight:600}
+.loja b small{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--teal)}
+.loja address{font-style:normal;font-size:13px;opacity:.65;margin-top:4px}
+.loja.nao{color:color-mix(in srgb,currentColor 55%,transparent)}
+.loja.nao .ponto{background:transparent;box-shadow:inset 0 0 0 1.5px currentColor}
+.loja.nao b small{color:inherit}
+.loja.talvez .ponto{background:var(--amarelo);box-shadow:0 0 0 4px #ffc20e40}
+.loja.talvez b small{color:inherit;opacity:.6}
+.loja-acoes{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.loja-acoes a{padding:9px 14px;border-radius:99px;border:1px solid color-mix(in srgb,currentColor 28%,transparent);font-size:12px;font-weight:600;white-space:nowrap;transition:background .3s,color .3s,border-color .3s}
+.loja-acoes a:hover{background:var(--tinta);color:var(--papel);border-color:transparent}
+.loja-acoes a.reserva{background:var(--cor);color:var(--destaque);border-color:transparent}
+.pp-aviso{margin-top:14px;opacity:.75}
+.pp-aviso[hidden]{display:none}
+.pp-horario{margin-top:14px;opacity:.55;font-size:11px}
+
+/* ficha técnica e descrição */
+.pp-dados{display:grid;grid-template-columns:max-content minmax(0,1fr);gap:12px 32px;margin-top:clamp(44px,8vh,80px);padding-top:26px;border-top:1px solid color-mix(in srgb,currentColor 22%,transparent)}
+.pp-dados:empty{display:none}
+.pp-dados dt{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:600;opacity:.55;padding-top:3px}
+.pp-dados dd{font-size:15px;overflow-wrap:anywhere}
+.pp-desc{margin-top:clamp(40px,7vh,72px);max-width:64ch}
+.pp-desc:empty{display:none}
+.pp-desc p{font-size:16px;line-height:1.65;opacity:.85}
+.pp-desc p+p{margin-top:1em}
+
+/* enquanto a ficha chega */
+.pp.carregando .pp-palco::after{content:'';position:absolute;inset:14% 24%;border-radius:6px;background:linear-gradient(100deg,#0000000f 30%,#0000001f 50%,#0000000f 70%) 0 0/300% 100%;animation:brilha 1.4s linear infinite}
+.pp.carregando :is(.pp-meta,.pp-tit,.pp-resumo,.pp-preco){color:transparent;border-radius:10px;background:linear-gradient(100deg,#0000000f 30%,#0000001f 50%,#0000000f 70%) 0 0/300% 100%;animation:brilha 1.4s linear infinite;width:fit-content;min-width:40%}
+.pp.carregando .pp-tit{min-width:80%}
+.pp.carregando :is(.pp-acoes,.pp-entrega,.pp-lojas,.pp-dados,.pp-desc){visibility:hidden}
+
+.pp-erro{display:flex;flex-direction:column;align-items:flex-start;gap:16px;padding:8vh 0}
+.pp-erro[hidden]{display:none}
+.pp-erro p:first-child{font-family:var(--serif);font-size:clamp(48px,7vw,120px);line-height:.92;letter-spacing:-.035em;max-width:14ch}
+
+@media (max-width:860px){
+  .pp{padding-top:96px}
+  .pp-grade{grid-template-columns:1fr;gap:28px}
+  .pp-palco{aspect-ratio:1/1;max-height:64vh}
+  .pp-volta{padding:10px 16px}
+  .loja{grid-template-columns:14px minmax(0,1fr)}
+  .loja-acoes{grid-column:2;justify-content:flex-start;margin-top:10px}
+  .pp-acoes .pill{flex:1 1 auto;justify-content:center}
+}
+@media (prefers-reduced-motion:reduce){
+  .pp.carregando .pp-palco::after,.pp.carregando :is(.pp-meta,.pp-tit,.pp-resumo,.pp-preco){animation:none}
+}

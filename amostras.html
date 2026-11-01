@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Amostras de Sites</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,Segoe UI,Arial,sans-serif;background:#111;color:#fff;overflow-x:hidden}
+#tabs{position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:99;display:flex;gap:6px;background:#000c;backdrop-filter:blur(10px);padding:6px;border-radius:99px;max-width:94vw;overflow:auto}
+#tabs a{color:#fff;text-decoration:none;font-size:12px;padding:7px 12px;border-radius:99px;white-space:nowrap;transition:.3s}
+#tabs a:hover,#tabs a.on{background:#fff;color:#000}
+section{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;justify-content:center;padding:110px 7vw 70px}
+.tag{font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-bottom:18px}
+h1{font-size:clamp(38px,7vw,100px);line-height:1;font-weight:800;letter-spacing:-.03em}
+h1 .w{display:inline-block;overflow:hidden;vertical-align:top}
+h1 .w i{display:inline-block;font-style:normal;transform:translateY(110%);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+.in h1 .w i{transform:none}
+p.sub{max-width:520px;margin:22px 0 30px;font-size:18px;line-height:1.5;opacity:.8}
+.btn{display:inline-block;padding:16px 30px;border-radius:99px;font-weight:700;border:0;cursor:pointer;font-size:16px;transition:transform .2s;will-change:transform}
+.rv{opacity:0;transform:translateY(40px);transition:1s cubic-bezier(.2,.8,.2,1)}
+.in .rv{opacity:1;transform:none}
+.in .rv:nth-child(2){transition-delay:.15s}.in .rv:nth-child(3){transition-delay:.3s}.in .rv:nth-child(4){transition-delay:.45s}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:50px;position:relative;z-index:2}
+.card{padding:26px;border-radius:20px;transition:transform .15s;transform-style:preserve-3d;will-change:transform}
+.card b{display:block;font-size:44px;margin-bottom:6px}
+/* 1 clinica */
+#s1{background:#eefaf8;color:#0b3b3c}
+#s1 .blob{position:absolute;border-radius:50%;filter:blur(60px);animation:morph 12s ease-in-out infinite alternate;opacity:.7}
+@keyframes morph{to{transform:translate(12vw,8vh) scale(1.4)}}
+#s1 .card{background:#fff;box-shadow:0 20px 50px #0b3b3c15}
+#s1 .btn{background:#0b3b3c;color:#fff}
+.float{position:absolute;font-size:60px;animation:fl 6s ease-in-out infinite;z-index:1}
+@keyframes fl{50%{transform:translateY(-30px) rotate(12deg)}}
+/* 2 advocacia */
+#s2{background:#0d0d12;color:#e9dcc0}
+#s2 svg{position:absolute;right:5vw;top:50%;transform:translateY(-50%);width:min(40vw,420px);opacity:.9}
+#s2 path,#s2 line,#s2 circle{stroke:#c9a44c;stroke-width:2;fill:none;stroke-dasharray:1200;stroke-dashoffset:1200}
+#s2.in path,#s2.in line,#s2.in circle{animation:draw 3.5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+#s2 h1{font-family:Georgia,serif;font-weight:400}
+#s2 .btn{background:#c9a44c;color:#000}
+.marq{position:absolute;bottom:20px;left:0;white-space:nowrap;font-size:90px;font-family:Georgia,serif;opacity:.07;animation:mq 30s linear infinite}
+@keyframes mq{to{transform:translateX(-50%)}}
+/* 3 eletrica */
+#s3{background:#14110a;color:#fff}
+#s3 .btn{background:#ffc700;color:#000}
+#s3 .card{background:#211c0f;border:1px solid #ffc70040}
+#s3 .card b{color:#ffc700}
+#s3 svg.circ{position:absolute;inset:0;width:100%;height:100%;opacity:.5}
+#s3 svg.circ path{stroke:#ffc700;stroke-width:1.5;fill:none;stroke-dasharray:14 600;animation:run 5s linear infinite}
+@keyframes run{to{stroke-dashoffset:-1228}}
+.bolt{animation:flash 3s infinite;display:inline-block}
+@keyframes flash{0%,90%,100%{opacity:1}93%{opacity:.1}96%{opacity:1}98%{opacity:.2}}
+/* 4 academia */
+#s4{background:#d7ff1f;color:#000}
+#s4 .big{position:absolute;white-space:nowrap;font-size:22vw;font-weight:900;opacity:.08;top:12%;animation:mq 25s linear infinite}
+#s4 .btn{background:#000;color:#d7ff1f}
+#s4 .card{background:#000;color:#d7ff1f}
+.pulse{display:inline-block;animation:pu 1s infinite}
+@keyframes pu{50%{transform:scale(1.25)}}
+/* 5 limpeza */
+#s5{background:linear-gradient(#0b6fb8,#58c4f2);color:#fff}
+#s5 .bub{position:absolute;bottom:-60px;border-radius:50%;border:2px solid #fff9;background:radial-gradient(circle at 30% 30%,#fff9,#fff1);animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-120vh) translateX(40px)}}
+#s5 .btn{background:#fff;color:#0b6fb8}
+.ba{position:relative;width:min(560px,100%);height:220px;border-radius:20px;overflow:hidden;margin-top:40px;user-select:none;z-index:2;box-shadow:0 20px 50px #0004}
+.ba div{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px;font-weight:800}
+.ba .dirty{background:#6b5a3e}
+.ba .clean{background:#e8fbff;color:#0b6fb8;clip-path:inset(0 50% 0 0)}
+.ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;z-index:3}
+.ba .bar{position:absolute;top:0;bottom:0;left:50%;width:4px;background:#fff;z-index:2;pointer-events:none}
+.wave{position:absolute;bottom:0;left:0;width:200%;height:90px;animation:mq 8s linear infinite;opacity:.35}
+.note{position:absolute;right:20px;bottom:16px;font-size:12px;opacity:.6;z-index:5}
+</style></head><body>
+<nav id="tabs">
+<a href="#s1">1 Clínica</a><a href="#s2">2 Advocacia</a><a href="#s3">3 Elétrica</a><a href="#s4">4 Academia</a><a href="#s5">5 Limpeza</a></nav>
+
+<section id="s1">
+<div class="blob" style="width:420px;height:420px;background:#7fe3d0;top:5%;left:50%"></div>
+<div class="blob" style="width:360px;height:360px;background:#ffd6c4;bottom:0;left:5%;animation-delay:-4s"></div>
+<span class="float" style="right:12%;top:25%">🦷</span><span class="float" style="right:25%;top:60%;animation-delay:-2s;font-size:40px">✨</span>
+<div class="tag rv">Clínica Sorriso Vivo</div>
+<h1 data-split>Seu melhor sorriso começa aqui</h1>
+<p class="sub rv">Implantes, lentes e ortodontia com tecnologia digital e atendimento sem dor.</p>
+<div><button class="btn mag">Agendar avaliação grátis</button></div>
+<div class="grid">
+<div class="card tilt rv"><b data-count="12000">0</b>pacientes atendidos</div>
+<div class="card tilt rv"><b data-count="18">0</b>anos de experiência</div>
+<div class="card tilt rv"><b data-count="98" data-suf="%">0</b>de satisfação</div></div>
+</section>
+
+<section id="s2">
+<div class="marq">DIREITO CIVIL · TRABALHISTA · EMPRESARIAL · FAMÍLIA · DIREITO CIVIL · TRABALHISTA · EMPRESARIAL · FAMÍLIA ·</div>
+<svg viewBox="0 0 300 300"><line x1="150" y1="30" x2="150" y2="270"/><line x1="60" y1="270" x2="240" y2="270"/><line x1="40" y1="70" x2="260" y2="70"/>
+<path d="M40 70 L10 150 Q40 180 70 150 Z"/><path d="M260 70 L230 150 Q260 180 290 150 Z"/><circle cx="150" cy="30" r="10"/></svg>
+<div class="tag rv">Almeida &amp; Costa Advogados</div>
+<h1 data-split>Defendemos o que é seu por direito</h1>
+<p class="sub rv">Mais de 20 anos de tradição com atendimento personalizado e resultado.</p>
+<div><button class="btn mag">Falar com um advogado</button></div>
+</section>
+
+<section id="s3">
+<svg class="circ" preserveAspectRatio="none" viewBox="0 0 1000 600"><path d="M0 100H300V250H600V80H1000"/><path d="M0 400H200V520H700V350H1000"/><path d="M100 0V180H450V600"/><path d="M800 0V260H1000"/></svg>
+<div class="tag rv">VoltMax Instalações</div>
+<h1 data-split>Energia segura. <span class="bolt">⚡</span> Sem dor de cabeça.</h1>
+<p class="sub rv">Elétrica residencial e industrial, atendimento 24h e orçamento em minutos.</p>
+<div><button class="btn mag">Chamar no WhatsApp</button></div>
+<div class="grid">
+<div class="card tilt rv"><b>24h</b>plantão de emergência</div>
+<div class="card tilt rv"><b>5 anos</b>garantia no serviço</div>
+<div class="card tilt rv"><b data-count="3500">0</b>obras entregues</div></div>
+</section>
+
+<section id="s4">
+<div class="big">TREINE PESADO · TREINE PESADO ·</div>
+<div class="tag rv">Iron Fit Academia</div>
+<h1 data-split>Transforme seu corpo em 90 dias</h1>
+<p class="sub rv">Musculação, funcional e aulas coletivas. Primeira semana grátis <span class="pulse">🔥</span></p>
+<div><button class="btn mag">Quero treinar</button></div>
+<div class="grid">
+<div class="card tilt rv"><b data-count="40" data-suf="+">0</b>aulas por semana</div>
+<div class="card tilt rv"><b data-count="1500">0</b>alunos ativos</div>
+<div class="card tilt rv"><b>6h às 23h</b>aberto todos os dias</div></div>
+</section>
+
+<section id="s5">
+<svg class="wave" viewBox="0 0 1200 100" preserveAspectRatio="none"><path d="M0 50Q150 0 300 50T600 50T900 50T1200 50V100H0Z" fill="#fff"/></svg>
+<div class="tag rv">BrilhoLar Limpeza</div>
+<h1 data-split>Seu espaço limpo, do jeito que merece</h1>
+<p class="sub rv">Limpeza residencial e comercial com equipe treinada. Arraste e veja a diferença:</p>
+<div class="ba"><div class="dirty">ANTES</div><div class="clean">DEPOIS ✨</div><span class="bar"></span><input type="range" min="0" max="100" value="50"></div>
+<div style="margin-top:30px;position:relative;z-index:2"><button class="btn mag">Pedir orçamento</button></div>
+<span class="note">demonstração</span>
+</section>
+
+<script>
+// split headlines
+document.querySelectorAll('[data-split]').forEach(h=>{
+ const nodes=[...h.childNodes];h.innerHTML='';let n=0;
+ nodes.forEach(nd=>{
+  if(nd.nodeType===3) nd.textContent.split(' ').filter(Boolean).forEach(w=>{h.insertAdjacentHTML('beforeend',`<span class="w"><i style="transition-delay:${n++*.08}s">${w}</i></span> `)});
+  else h.appendChild(nd),h.append(' ');
+ });
+});
+// reveal + counters
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+ if(e.isIntersecting&&!e.target.classList.contains('in')){
+  e.target.classList.add('in');
+  e.target.querySelectorAll('[data-count]').forEach(el=>{
+   const to=+el.dataset.count,suf=el.dataset.suf||'',t0=performance.now();
+   (function f(t){const p=Math.min((t-t0)/1800,1);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('pt-BR')+suf;if(p<1)requestAnimationFrame(f)})(t0);
+  });
+ }
+ if(e.isIntersecting) document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id));
+}),{threshold:.4});
+document.querySelectorAll('section').forEach(s=>io.observe(s));
+// 3D tilt
+document.querySelectorAll('.tilt').forEach(c=>{
+ c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.transform=`perspective(600px) rotateY(${x*18}deg) rotateX(${-y*18}deg) translateY(-6px)`});
+ c.addEventListener('mouseleave',()=>c.style.transform='');
+});
+// magnetic buttons
+document.querySelectorAll('.mag').forEach(b=>{
+ b.addEventListener('mousemove',e=>{const r=b.getBoundingClientRect();b.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.5}px)`});
+ b.addEventListener('mouseleave',()=>b.style.transform='');
+});
+// bubbles
+for(let i=0;i<24;i++){const b=document.createElement('span');b.className='bub';const s=14+Math.random()*60;
+ b.style.cssText=`width:${s}px;height:${s}px;left:${Math.random()*100}%;animation-duration:${6+Math.random()*9}s;animation-delay:-${Math.random()*10}s`;
+ document.getElementById('s5').appendChild(b)}
+// before/after
+const r=document.querySelector('.ba input'),cl=document.querySelector('.clean'),bar=document.querySelector('.bar');
+r.oninput=()=>{cl.style.clipPath=`inset(0 ${100-r.value}% 0 0)`;bar.style.left=r.value+'%'};
+// parallax on scroll
+addEventListener('scroll',()=>{document.querySelectorAll('.float,#s2 svg').forEach((el,i)=>{});
+ const y=scrollY;document.querySelectorAll('.blob').forEach((b,i)=>b.style.marginTop=(y*.1*(i+1))%200+'px')});
+</script></body></html>

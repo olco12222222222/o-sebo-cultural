@@ -1,0 +1,165 @@
+# O Sebo Cultural: guia completo
+
+> Sebo em João Pessoa, Paraíba, Brasil, ativo desde 1987. Vende, compra e troca livros usados, raros e esgotados, gibis e quadrinhos, discos de vinil, CDs e DVDs. São mais de 210 mil itens no catálogo online, três lojas físicas em João Pessoa e entrega em até 48h na cidade, com envio para todo o Brasil.
+
+Este arquivo reúne, em texto simples, tudo o que está no site https://lojasebocultural.com.br/ para que assistentes de IA e buscadores possam responder com precisão. Resumo curto: https://lojasebocultural.com.br/llms.txt
+
+## Quem somos
+
+- Nome: O Sebo Cultural (também conhecido como Sebo Cultural ou Sebo Cultural João Pessoa)
+- Tipo: sebo (livraria e loja de usados) com venda online e três lojas físicas
+- Cidade: João Pessoa, Paraíba (PB), Nordeste do Brasil
+- Desde: 1987
+- CNPJ: 12.676.060/0001-08
+- Site: https://lojasebocultural.com.br/
+- Lema: "Cada livro merece uma segunda leitura."
+- Projeto social: Leitura para Todos, que recebe doações de livros
+
+## O acervo
+
+Quase tudo é usado e muitas vezes exemplar único. O catálogo online é um só para as três lojas, e a página de cada item mostra em qual loja ele está.
+
+### Livros usados, raros e esgotados (quase 200 mil)
+
+Página: https://lojasebocultural.com.br/livros.html
+
+Seções em destaque: Paraíba (autores e temas paraibanos), literatura brasileira, literatura estrangeira, livros raros, psicologia, poemas e poesias, romance, filosofia, história do Brasil, biografias, artes, infantil e juvenil. Também há didáticos, religião, ciências humanas e dezenas de outras categorias.
+
+### Gibis, HQs e mangás (mais de 7.700)
+
+Página: https://lojasebocultural.com.br/gibis.html
+
+Destaques: Tex, Batman, Marvel, O Fantasma, One Piece, Superman, Homem-Aranha, X-Men, além de coleções raras.
+
+### Discos de vinil (mais de 3.600)
+
+Página: https://lojasebocultural.com.br/vinis.html
+
+Gêneros: MPB, rock, jazz, samba, forró, clássico, bossa nova, pop e raridades.
+
+### CDs (mais de 6.400)
+
+Página: https://lojasebocultural.com.br/cds.html
+
+Gêneros: MPB, rock, jazz, pop, samba, forró, eletrônica, clássico e trilhas sonoras. Os discos são conferidos antes da venda.
+
+### DVDs (mais de 2.700)
+
+Página: https://lojasebocultural.com.br/dvds.html
+
+Gêneros: drama, ação e aventura, comédia, shows, suspense, terror, infantil, clássicos, cinema nacional e documentários.
+
+### Busca e página de cada item
+
+- Busca em todo o acervo: https://lojasebocultural.com.br/acervo.html
+- Página de um item: https://lojasebocultural.com.br/produto.html?id=NÚMERO. Mostra preço em reais, fotos, descrição, estado de conservação e as lojas onde o exemplar está.
+
+## Como comprar
+
+1. Escolha os itens no site e coloque na sacola. Não precisa de cadastro nem login.
+2. Finalize o pedido pelo WhatsApp (83) 98650-0540. O atendimento confirma preço e disponibilidade.
+3. Pague por Pix ou Mercado Pago, ou combine direto pelo WhatsApp.
+4. Receba em casa ou retire em uma das três lojas.
+
+Preço e disponibilidade podem mudar até o pedido ser confirmado, porque muitos itens são exemplar único. O pedido só é reservado depois da confirmação do pagamento ou do atendimento.
+
+## Entrega e retirada
+
+- João Pessoa: entrega em até 48h.
+- Outras cidades do Brasil: envio por SEDEX ou PAC.
+- Retirada na loja: grátis; o pedido fica separado por até 48h na loja escolhida.
+
+## Compra, troca e venda do seu acervo
+
+- O sebo compra e troca livros, gibis, discos, CDs e DVDs.
+- Compra, troca e avaliação são feitas só na matriz do Centro (Av. Tabajaras, 848).
+- Em crédito na loja o valor pago é maior do que em Pix ou dinheiro.
+- Não há avaliação por telefone: a avaliação é feita item por item, presencialmente.
+- Busca de acervos em casa: só para lotes grandes. Mande fotos pelo WhatsApp (83) 98650-0540 para combinar a visita.
+- Doações: aceitas pelo projeto Leitura para Todos.
+
+## Lojas, endereços e horários
+
+Horário das três lojas: segunda a sexta, das 8h às 17h30; sábado, das 8h às 13h; fechado aos domingos.
+
+### Centro (matriz)
+
+- Endereço: Av. Tabajaras, 848, Centro, João Pessoa - PB, CEP 58013-270
+- Telefone: (83) 3222-4438
+- É a única loja que faz compra, troca e avaliação de acervos.
+
+### Bancários
+
+- Endereço: Rua João Rodrigues Alves, 253, Sala 03, Praça da Paz, Jardim São Paulo (Bancários), João Pessoa - PB, CEP 58051-022
+- Telefone: (83) 3508-4793
+
+### Manaíra
+
+- Endereço: Av. Gov. Flávio Ribeiro Coutinho, 205, Sala 105, Ed. Business Center, Manaíra, João Pessoa - PB, CEP 58037-000
+- Telefone: (83) 3185-6060
+
+## Contato
+
+- WhatsApp (pedidos e dúvidas): (83) 98650-0540, https://wa.me/5583986500540
+- E-mail: osebocultural.site@gmail.com
+- Página de contato: https://lojasebocultural.com.br/contato.html
+- Instagram: https://www.instagram.com/osebocultural/
+- YouTube: https://www.youtube.com/@SeboCultural
+- TikTok: https://www.tiktok.com/@osebocultural
+
+## Perguntas frequentes
+
+**Vocês compram livros, discos e filmes?**
+Sim. Compra, troca e avaliação são feitas só na matriz do Centro, na Av. Tabajaras, 848. Em crédito na loja o valor é maior do que em Pix ou dinheiro.
+
+**Dá para saber o valor pelo telefone?**
+Não. A avaliação é feita item por item, presencialmente, na loja do Centro.
+
+**Vocês buscam acervos em casa?**
+Só para lotes grandes. Mande fotos pelo WhatsApp (83) 98650-0540 para combinarmos a visita.
+
+**Aceitam doações?**
+Sim, pelo projeto Leitura para Todos. Fale com a gente pelo WhatsApp.
+
+**Como funciona a entrega?**
+Em João Pessoa, entregamos em até 48h. Para outras cidades, enviamos por SEDEX ou PAC.
+
+**Posso retirar o pedido na loja?**
+Pode. O pedido fica separado por até 48h na loja escolhida.
+
+**Posso devolver um produto?**
+Sim, em até 7 dias após o recebimento.
+
+**Quais as formas de pagamento?**
+Pix, Mercado Pago ou combinando direto pelo WhatsApp.
+
+**Preciso criar conta para comprar?**
+Não. O site não tem cadastro nem login; a sacola fica salva no seu aparelho e o pedido é finalizado pelo WhatsApp.
+
+**Como sei em qual loja está um livro ou disco?**
+A página de cada item mostra em quais das três lojas ele está para ver pessoalmente.
+
+**Vocês abrem no domingo?**
+Não. As três lojas abrem de segunda a sexta, das 8h às 17h30, e no sábado, das 8h às 13h.
+
+## Políticas
+
+Texto completo: https://lojasebocultural.com.br/politicas.html
+
+- Privacidade (LGPD, Lei 13.709/2018): o site não tem cadastro. Ao finalizar pelo WhatsApp, o sebo recebe nome, telefone e itens do pedido pela conversa. Dados de cartão vão direto para a operadora; o sebo não guarda número de cartão e não vende dados. Pedidos de acesso, correção ou exclusão: osebocultural.site@gmail.com.
+- Cookies: só o armazenamento essencial da sacola, no navegador. Sem cookies de publicidade ou rastreamento.
+- Termos: as fotos mostram o exemplar ou a edição; o estado de conservação é descrito na página do item. Textos, fotos e a marca O Sebo Cultural não podem ser copiados sem autorização.
+- Trocas e devoluções: compras com entrega podem ser desfeitas em até 7 dias após o recebimento (art. 49 do Código de Defesa do Consumidor), com o item no mesmo estado. Defeito não descrito (páginas faltando, disco riscado): troca ou devolução do valor. O reembolso volta pelo mesmo meio de pagamento. Compras feitas na loja: falar com a equipe da unidade.
+
+## Páginas do site
+
+- Início: https://lojasebocultural.com.br/
+- Acervo: https://lojasebocultural.com.br/acervo.html
+- Livros: https://lojasebocultural.com.br/livros.html
+- Gibis: https://lojasebocultural.com.br/gibis.html
+- Vinis: https://lojasebocultural.com.br/vinis.html
+- CDs: https://lojasebocultural.com.br/cds.html
+- DVDs: https://lojasebocultural.com.br/dvds.html
+- Contato: https://lojasebocultural.com.br/contato.html
+- Políticas: https://lojasebocultural.com.br/politicas.html
+- Mapa do site: https://lojasebocultural.com.br/sitemap.xml
